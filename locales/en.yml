@@ -1,0 +1,10 @@
+button:
+  about: About
+  back: Back
+  go: Go
+  home: Home
+  toggle_langs: Change languages
+intro:
+  hi: Hi, {name}!
+  aka: Also known as
+not-found: Not found
