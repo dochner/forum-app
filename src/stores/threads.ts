@@ -1,4 +1,4 @@
-import { Thread } from './../types/index';
+import { Thread } from "./../types/index";
 import { defineStore, acceptHMRUpdate } from "pinia";
 
 export const useThreadsStore = defineStore({
@@ -19,5 +19,3 @@ export const useThreadsStore = defineStore({
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useThreadsStore, import.meta.hot));
 }
-
-

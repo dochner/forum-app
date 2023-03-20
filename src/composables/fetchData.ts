@@ -1,15 +1,20 @@
-import { MaybeRef } from "@vueuse/core"
+import type { MaybeRef } from "@vueuse/core";
 
-export const useFetchData = (url: MaybeRef<string>) => {
+export const useFetchData = async (url: MaybeRef<string>) => {
   const {
     data,
     error,
     isFetching: isLoading,
     abort,
     execute,
+    get,
+    post,
+    put,
+    formData,
+    delete: del,
     onFetchError: onError,
-    onFetchFinally: onDone
-  } = useFetch(url)
+    onFetchFinally: onDone,
+  } = await useFetch(url);
 
   return {
     data,
@@ -19,5 +24,10 @@ export const useFetchData = (url: MaybeRef<string>) => {
     onDone,
     abort,
     execute,
-  }
-}
+    get,
+    post,
+    put,
+    del,
+    formData,
+  };
+};

@@ -9,7 +9,12 @@
 
             <!-- loading state -->
             <template #fallback>
-              Loading...
+              <div
+                class="fixed top-0 left-0 w-full h-full bg-black/4 items-center justify-center flex flex-col"
+              >
+                <AppSpinner />
+                {{ $t("loading") }}
+              </div>
             </template>
           </Suspense>
         </Transition>

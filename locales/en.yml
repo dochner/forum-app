@@ -4,7 +4,36 @@ button:
   go: Go
   home: Home
   toggle_langs: Change languages
+  edit_profile: Edit profile
+  save: Save
+  cancel: Cancel
+  random_avatar: Random Avatar
 intro:
   hi: Hi, {name}!
+  welcome: Welcome to Forum App
   aka: Also known as
-not-found: Not found
+title:
+  categories: Categories
+  forums: Forums
+  login_again: Login again to change your e-mail
+  no_threads_available: No Threads Available
+  posts: Posts
+  threads: Threads
+label:
+  username: Username
+  full_name: Full name
+  bio: Bio
+  password: Password
+  location: Address
+placeholder:
+  about_yourself: Write a few words about yourself
+not_found: Not found
+make_a_change: Make a change
+no_bio: No bio specified
+profile_picture: "{name} profile picture"
+is_online: is online
+posts: posts
+threads: threads
+replies: replies
+by: By
+loading: Loading

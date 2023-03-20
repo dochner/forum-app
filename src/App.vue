@@ -3,24 +3,25 @@
 // you can use this to manipulate the document head in any components,
 // they will be rendered correctly in the html results with vite-ssg
 useHead({
-  title: 'Forum',
+  title: "Forum",
   meta: [
-    { name: 'description', content: 'Forum app' },
+    { name: "description", content: "Forum app" },
     {
-      name: 'theme-color',
-      content: '#00aba9',
+      name: "theme-color",
+      content: "#00aba9",
     },
   ],
   link: [
     {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      href: '/favicon.svg',
+      rel: "icon",
+      type: "image/svg+xml",
+      href: "/favicon.svg",
     },
   ],
-})
+});
 </script>
 
 <template>
   <RouterView />
+  <notifications />
 </template>

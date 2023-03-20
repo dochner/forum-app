@@ -1,8 +1,8 @@
-import { defineStore, acceptHMRUpdate } from "pinia";
-import { User } from "~/types";
+import { acceptHMRUpdate, defineStore } from "pinia";
+import type { User } from "~/types";
 
 export const useUserStore = defineStore({
-  id: 'user',
+  id: "user",
   state: () => ({
     user: <User | null>null,
   }),
@@ -13,8 +13,8 @@ export const useUserStore = defineStore({
     setUser(user: User | null) {
       this.user = user;
     },
-  }
-})
+  },
+});
 
 if (import.meta.hot) {
   import.meta.hot.accept(acceptHMRUpdate(useUserStore, import.meta.hot));

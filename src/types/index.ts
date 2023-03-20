@@ -1,53 +1,23 @@
-import { App } from "vue"
-import { Router } from "vue-router"
+import type { App } from "vue";
+import type { Router } from "vue-router";
 
-export type VueContext = {
-  app: App
-  router: Router
+export interface VueContext {
+  app: App;
+  router: Router;
 }
 
-export type UserModule = (ctx: VueContext) => void
+export type UserModule = (ctx: VueContext) => void;
 
 export type ID = string;
 
-export type Stat = {
+export interface Stat {
   postsCount: number;
   threadsCount: number;
   usersCount: number;
   usersOnline: number;
 }
 
-export type Category = {
-  id: ID;
-  name: string;
-  slug: string;
-  forums: ID[]
-}
-
-export type Post = {
-  id: ID;
-  threadId: string;
-  userId: string;
-  text: string;
-  publishedAt: EpochTimeStamp;
-  edited: {
-    at: EpochTimeStamp;
-    by: string;
-    moderated: boolean;
-  }
-}
-
-export type Forum = {
-  id: ID;
-  categoryId: string;
-  name: string;
-  slug: string;
-  description: string;
-  theads: ID[];
-  lastPostId: Post;
-}
-
-export type User = {
+export interface User {
   id: ID;
   name: string;
   username: string;
@@ -59,14 +29,44 @@ export type User = {
   lastVisitAt: EpochTimeStamp;
 }
 
-export type Thread = {
+export interface Thread {
   id: ID;
   firstPostId: string;
   forumId: string;
   lastPostAt: EpochTimeStamp;
   lastPostId: string;
-  posts: Post[];
+  posts: ID[];
   slug: string;
   title: string;
   userId: string;
+}
+
+export interface Post {
+  id: ID;
+  threadId?: string;
+  userId?: string;
+  text?: string;
+  publishedAt?: EpochTimeStamp;
+  edited?: {
+    at: EpochTimeStamp;
+    by: string;
+    moderated: boolean;
+  };
+}
+
+export interface Forum {
+  id: ID;
+  categoryId: string;
+  name: string;
+  slug: string;
+  description: string;
+  threads: ID[];
+  lastPostId: Post;
+}
+
+export interface Category {
+  id: ID;
+  name: string;
+  slug: string;
+  forums: ID[];
 }

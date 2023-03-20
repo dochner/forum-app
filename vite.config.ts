@@ -46,7 +46,7 @@ export default ({ mode }) => {
           "@vueuse/core",
         ],
         dts: "src/auto-imports.d.ts",
-        dirs: ["src/composables", "src/stores"],
+        dirs: ["src/composables", "src/stores", "src/utils"],
         vueTemplate: true,
       }),
 

@@ -9,8 +9,28 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppAvatarImg: typeof import('./src/components/AppAvatarImg.vue')['default']
+    AppCategoryList: typeof import('./src/components/AppCategoryList.vue')['default']
+    AppDate: typeof import('./src/components/AppDate.vue')['default']
+    AppFormField: typeof import('./src/components/AppFormField.vue')['default']
+    AppForumList: typeof import('./src/components/AppForumList.vue')['default']
+    AppInfiniteScroll: typeof import('./src/components/AppInfiniteScroll.vue')['default']
+    AppLocale: typeof import('./src/components/AppLocale.vue')['default']
+    AppModal: typeof import('./src/components/AppModal.vue')['default']
+    AppPagination: typeof import('./src/components/AppPagination.vue')['default']
+    AppPostEditor: typeof import('./src/components/AppPostEditor.vue')['default']
+    AppPostList: typeof import('./src/components/AppPostList.vue')['default']
+    AppSpinner: typeof import('./src/components/AppSpinner.vue')['default']
+    AppThreadEditor: typeof import('./src/components/AppThreadEditor.vue')['default']
+    AppThreadList: typeof import('./src/components/AppThreadList.vue')['default']
+    AppUserProfileCard: typeof import('./src/components/AppUserProfileCard.vue')['default']
+    AppUserProfileCardEditor: typeof import('./src/components/AppUserProfileCardEditor.vue')['default']
+    AppUserProfileCardEditorRandomAvatar: typeof import('./src/components/AppUserProfileCardEditorRandomAvatar.vue')['default']
+    AppUserProfileCardEditorReauthenticate: typeof import('./src/components/AppUserProfileCardEditorReauthenticate.vue')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TheNavbar: typeof import('./src/components/TheNavbar.vue')['default']
+    ThePagination: typeof import('./src/components/ThePagination.vue')['default']
   }
 }
