@@ -1,5 +1,5 @@
-import { Thread } from "./../types/index";
-import { defineStore, acceptHMRUpdate } from "pinia";
+import { acceptHMRUpdate, defineStore } from "pinia";
+import type { ID, Thread } from "./../types/index";
 
 export const useThreadsStore = defineStore({
   id: "threads",
@@ -8,6 +8,13 @@ export const useThreadsStore = defineStore({
   }),
   getters: {
     getThreads: (state) => state.threads,
+    getThreadsByIds: (state) => {
+      return (ids: ID[]) => {
+        if (ids?.length) {
+          return state.threads?.filter((thread) => ids.includes(thread.id));
+        }
+      };
+    },
   },
   actions: {
     setThreads(threads: Thread[] | null) {

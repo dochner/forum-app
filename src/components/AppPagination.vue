@@ -4,8 +4,6 @@ import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 
 const props = defineProps<Props>();
 
-defineEmits(["update:modelValue"]);
-
 defineModel<{ modelValue: string }>();
 
 interface Props {

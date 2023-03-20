@@ -1,4 +1,5 @@
 <template>
+  <TheNavbar />
   <main>
     <RouterView v-slot="{ Component }">
       <template v-if="Component">

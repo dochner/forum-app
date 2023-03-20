@@ -1,4 +1,4 @@
-const ClickOutside = {
+export const ClickOutside = {
   mounted(el, binding) {
     el.__ClickOutsideHandler__ = (event) => {
       if (!(el === event.target || el.contains(event.target))) {
@@ -11,6 +11,5 @@ const ClickOutside = {
     document.body.removeEventListener("click", el.__ClickOutsideHandler__);
   },
 };
-export default (app) => {
-  app.directive("click-outside", ClickOutside);
-};
+
+export default ClickOutside;

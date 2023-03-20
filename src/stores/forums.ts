@@ -18,21 +18,6 @@ export const useForumStore = defineStore({
     setForums(forums: Forum[] | undefined) {
       this.forums = forums;
     },
-    async fetchForums(forumIds: ID[]) {
-      const { data, onError } = await useFetchData("/api/forums");
-
-      if (data.value) {
-        this.setForums(data.value);
-      }
-      onError((err) => {
-        console.log("error", err);
-      });
-    },
-    async fetchForum(forumId: ID) {
-      const { data } = await useFetchData(`/api/forums/${forumId}`);
-
-      return data;
-    },
   },
 });
 
