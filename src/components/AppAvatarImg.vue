@@ -1,11 +1,99 @@
-<script setup lang="ts">
-interface Props {
-  src?: string;
-}
+<script setup>
+import { notify } from "@kyvg/vue3-notification";
 
-defineProps<Props>();
+const prop = defineProps(["path", "size"]);
+const emit = defineEmits(["upload", "update:path"]);
+
+const { path, size } = toRefs(prop);
+
+const uploading = ref(false);
+const src = ref("");
+const files = ref();
+
+const downloadImage = async () => {
+  try {
+    const { data, error } = await useSupabase.storage
+      .from("avatars")
+      .download(path.value);
+    if (error) {
+      throw error;
+    }
+    src.value = URL.createObjectURL(data);
+  } catch (error) {
+    notify({
+      title: "Error",
+      text: `Error downloading image: ${error.message}`,
+      type: "error",
+    });
+  }
+};
+
+const uploadAvatar = async (evt) => {
+  files.value = evt.target.files;
+  try {
+    uploading.value = true;
+    if (!files.value || files.value.length === 0) {
+      throw new Error("You must select an image to upload.");
+    }
+
+    const file = files.value[0];
+    const fileExt = file.name.split(".").pop();
+    const filePath = `${Math.random()}.${fileExt}`;
+
+    const { error: uploadError } = await useSupabase.storage
+      .from("avatars")
+      .upload(filePath, file);
+
+    if (uploadError) {
+      throw uploadError;
+    }
+    emit("update:path", filePath);
+    emit("upload");
+  } catch (error) {
+    notify({
+      title: "Error",
+      text: error.message,
+      type: "error",
+    });
+  } finally {
+    uploading.value = false;
+  }
+};
+
+watch(path, () => {
+  if (path.value) {
+    downloadImage();
+  }
+});
 </script>
 
 <template>
-  <img :src="src || '/user-placeholder.png'" alt="" aria-hidden />
+  <div>
+    <img
+      v-if="src"
+      :src="src"
+      alt="Avatar"
+      class="avatar image"
+      :style="{ height: `${size}em`, width: `${size}em` }"
+    />
+    <div
+      v-else
+      class="avatar no-image"
+      :style="{ height: `${size}em`, width: `${size}em` }"
+    />
+
+    <div :style="{ width: `${size}em` }">
+      <label class="button primary block" for="single">
+        {{ uploading ? "Uploading ..." : "Upload" }}
+      </label>
+      <input
+        id="single"
+        style="visibility: hidden; position: absolute"
+        type="file"
+        accept="image/*"
+        :disabled="uploading"
+        @change="uploadAvatar"
+      />
+    </div>
+  </div>
 </template>

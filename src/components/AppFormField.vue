@@ -1,7 +1,8 @@
 <script setup lang="ts">
 interface Props {
+  modelValue?: string;
   name: string;
-  label: string;
+  label?: string;
 }
 
 withDefaults(defineProps<Props>(), {
@@ -11,10 +12,6 @@ withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits<{
   (event: "update:modelValue", value?: string): void;
-}>();
-
-defineModel<{
-  modelValue: string;
 }>();
 </script>
 
@@ -28,7 +25,7 @@ defineModel<{
       :model-value="modelValue"
       class="form-input"
       v-bind="$attrs"
-      @input="emit('update:modelValue', $event)"
+      @input="emit('update:modelValue', $event.target.value)"
     />
     <VeeErrorMessage :name="name" class="form-error" />
   </div>
